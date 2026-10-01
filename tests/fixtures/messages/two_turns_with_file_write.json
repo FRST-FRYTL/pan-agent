@@ -1,0 +1,11 @@
+[
+  {"role": "system", "content": "You are Hermes."},
+  {"role": "user", "content": "Is vLLM running?"},
+  {"role": "assistant", "content": null, "tool_calls": [{"id": "tc-1", "type": "function", "function": {"name": "terminal", "arguments": "{\"command\": \"docker ps\"}"}}]},
+  {"role": "tool", "tool_call_id": "tc-1", "name": "terminal", "content": "vllm-main  Up 5 days (healthy)"},
+  {"role": "assistant", "content": "Yes — the vllm-main container is up and healthy."},
+  {"role": "user", "content": "Write the serve flags to notes/vllm.md"},
+  {"role": "assistant", "content": "Writing the file.", "tool_calls": [{"id": "tc-2", "type": "function", "function": {"name": "write_file", "arguments": "{\"path\": \"notes/vllm.md\", \"content\": \"--enable-auto-tool-choice --tool-call-parser hermes\"}"}}]},
+  {"role": "tool", "tool_call_id": "tc-2", "name": "write_file", "content": "{\"bytes_written\": 52, \"dirs_created\": true}"},
+  {"role": "assistant", "content": "Done — notes/vllm.md now lists the serve flags."}
+]

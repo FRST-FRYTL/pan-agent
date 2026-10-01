@@ -1,0 +1,171 @@
+{
+  "indexed": {
+    "index.md": true,
+    "operations/vllm-server.md": true
+  },
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\").",
+      "vLLM server runs on port 8010."
+    ]
+  },
+  "page_texts": {
+    "index.md": "---\nid: index\ntype: index\nstatus: active\ncreated: 2026-09-23\nupdated: 2026-09-24\nconfidence: high\ntags: [index]\n---\n\n# PAN Wiki (test seed)\n\n| Area | Pages |\n|---|---|\n| decisions/ | [ADR-001: SQLite FTS5 for retrieval](decisions/ADR-001-sqlite-fts5-retrieval.md) |\n| systems/ | [DGX Spark host](systems/dgx-spark-host.md), [Langfuse](systems/langfuse.md) |\n| learnings/ | [vLLM tool calling](learnings/vllm-tool-calling.md) |\n| operations/ | [Restart vLLM with tool calling](operations/restart-vllm.md) |\n| incidents/ | [Event spool disk full](incidents/2026-09-20-spool-disk-full.md) |\n\n## Pages\n\n_Maintained by `pan-memoryd`: every page it creates is linked here, grouped by area._\n\n### operations/\n\n- [vLLM server](operations/vllm-server.md)\n",
+    "operations/vllm-server.md": "---\nid: operations.vllm-server\ntype: environment\nstatus: active\ncreated: 2026-09-24\nupdated: 2026-09-24\nconfidence: medium\nsources:\n  - session:sess-fu1\n  - event:01K0FUP0000000000000000001\n  - event:01K0FUP0000000000000000003\n  - event:01K0FUP0000000000000000004\n  - event:01K0FUP0000000000000000002\n  - l1:memory\n  - session:sess-fu2\n  - event:01K0FUP0000000000000000006\nrelated: []\ntags: [vllm]\nsubject: vLLM server\n---\n\n# vLLM server\n\n## Facts\n\n- ~~Our vLLM server runs on port 8000.~~ (observed; superseded 2026-09-24 by session:sess-fu2)\n\n## Updates\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-fu1, event:01K0FUP0000000000000000001, event:01K0FUP0000000000000000003, event:01K0FUP0000000000000000004_\n\n### 2026-09-24 · session:sess-fu2\n\n- We moved the vLLM server to port 8010. (observed)\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-fu2, event:01K0FUP0000000000000000006_\n"
+  },
+  "pages": {
+    "created": [
+      "operations/vllm-server.md"
+    ],
+    "updated": [
+      "index.md"
+    ]
+  },
+  "records": [
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "Our vLLM server runs on port 8000."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0FUP0000000000000000001",
+        "01K0FUP0000000000000000003",
+        "01K0FUP0000000000000000004"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-fu1",
+        "event:01K0FUP0000000000000000001",
+        "event:01K0FUP0000000000000000003",
+        "event:01K0FUP0000000000000000004"
+      ],
+      "session_id": "sess-fu1",
+      "target_pages": [
+        "operations.vllm-server"
+      ]
+    },
+    {
+      "action": "update",
+      "claim_evidence": [
+        "inferred"
+      ],
+      "claims": [
+        "vLLM server runs on port 8000."
+      ],
+      "classification": {
+        "confidence": 0.7,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.9,
+      "event_ids": [
+        "01K0FUP0000000000000000002"
+      ],
+      "evidence": "inferred",
+      "l1": [
+        {
+          "entry": "vLLM server runs on port 8000.",
+          "status": "agent_write",
+          "target": "memory"
+        }
+      ],
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-fu1",
+        "event:01K0FUP0000000000000000002",
+        "l1:memory"
+      ],
+      "session_id": "sess-fu1",
+      "target_pages": [
+        "operations.vllm-server"
+      ]
+    },
+    {
+      "action": "update",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "We moved the vLLM server to port 8010."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0FUP0000000000000000006"
+      ],
+      "evidence": "observed",
+      "l1": [
+        {
+          "entry": "vLLM server runs on port 8000.",
+          "replacement": "vLLM server runs on port 8010.",
+          "status": "superseded",
+          "target": "memory"
+        }
+      ],
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-fu2",
+        "event:01K0FUP0000000000000000006"
+      ],
+      "session_id": "sess-fu2",
+      "target_pages": [
+        "operations.vllm-server"
+      ]
+    },
+    {
+      "action": null,
+      "claim_evidence": [],
+      "claims": [],
+      "classification": {
+        "confidence": 0.9,
+        "destination": "none",
+        "importance": 0.0,
+        "lifetime": "transient",
+        "relevance": 0.1,
+        "should_remember": false,
+        "type": "noise"
+      },
+      "confidence": null,
+      "event_ids": [
+        "01K0FUP0000000000000000008"
+      ],
+      "evidence": null,
+      "l1": null,
+      "outcome": "dropped",
+      "provenance": null,
+      "session_id": "sess-fu3",
+      "target_pages": null
+    }
+  ],
+  "scenario": "fact_update"
+}

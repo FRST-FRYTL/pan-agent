@@ -1,0 +1,60 @@
+{
+  "indexed": {},
+  "l1_added": {
+    "user": [
+      "User preference (own words): \"Write meeting notes as Markdown files in the repo, don't e-mail them unless I ask.\""
+    ]
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {},
+  "pages": {
+    "created": [],
+    "updated": []
+  },
+  "records": [
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "Write meeting notes as Markdown files in the repo, don't e-mail them unless I ask."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "user",
+        "importance": 0.7,
+        "lifetime": "long_term",
+        "relevance": 0.9,
+        "should_remember": true,
+        "type": "user_preference"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0PREF000000000000000001"
+      ],
+      "evidence": "observed",
+      "l1": [
+        {
+          "entry": "User preference (own words): \"Write meeting notes as Markdown files in the repo, don't e-mail them unless I ask.\"",
+          "status": "added",
+          "target": "user"
+        }
+      ],
+      "outcome": "l1_added",
+      "provenance": [
+        "session:sess-pref",
+        "event:01K0PREF000000000000000001"
+      ],
+      "session_id": "sess-pref",
+      "target_pages": [
+        "l1:user"
+      ]
+    }
+  ],
+  "scenario": "preference"
+}

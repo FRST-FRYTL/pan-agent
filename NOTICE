@@ -1,0 +1,14 @@
+pan-agent (PAN, Persistent Agent Nexus)
+Copyright (c) 2026 FRST-FRYTL. Licensed under the MIT License (see LICENSE).
+
+pan-agent is an add-on for Hermes Agent (https://github.com/NousResearch/hermes-agent),
+Copyright (c) 2025 Nous Research, also MIT-licensed. pan-agent does not contain or redistribute
+Hermes Agent source code. It is installed into an existing Hermes environment and uses Hermes'
+plugin interfaces (the `hermes_agent.memory_providers` entry point and hooks) at runtime. Its tests
+import Hermes. PAN was developed in a private fork of Hermes Agent; that fork is not part of this
+distribution.
+
+pan-agent is an independent project. It is not affiliated with or endorsed by Nous Research.
+"Hermes Agent" is used only to describe compatibility.
+
+Runtime dependency: PyYAML (MIT). Test dependency: pytest (MIT).

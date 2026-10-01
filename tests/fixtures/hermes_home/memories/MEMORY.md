@@ -1,0 +1,1 @@
+Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model "primary").

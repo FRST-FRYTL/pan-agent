@@ -1,0 +1,93 @@
+# pan-agent CI: tests against Hermes at the tested commit (HERMES_BASE), unit tests without Hermes,
+# a secret scan and a DCO sign-off check.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-hermes:
+    name: tests (Hermes at HERMES_BASE)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the tested Hermes commit
+        id: pin
+        run: echo "sha=$(tr -d '[:space:]' < HERMES_BASE)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: NousResearch/hermes-agent
+          ref: ${{ steps.pin.outputs.sha }}
+          path: _hermes
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Install Hermes (its lockfile) and pan-agent into Hermes' venv
+        run: |
+          (cd _hermes && uv sync --frozen --extra dev)
+          uv pip install --python _hermes/.venv/bin/python ".[test]"
+      - name: Unit, contract and e2e tests
+        run: _hermes/.venv/bin/python -m pytest -q
+
+  test-unit-clean:
+    name: unit tests (no Hermes)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: |
+          uv venv --python ${{ matrix.python }}
+          uv pip install ".[test]"
+          .venv/bin/python -m pytest -q tests/unit
+
+  gitleaks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      GITLEAKS_VERSION: 8.30.1
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks (checksum-pinned)
+        run: |
+          curl -fsSLo gitleaks.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gitleaks.tgz" | sha256sum -c -
+          tar -xzf gitleaks.tgz gitleaks
+      - name: Scan the full history
+        run: ./gitleaks git --no-banner --redact --exit-code 1 .
+
+  dco:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Every commit is signed off by its author
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          fail=0
+          for c in $(git rev-list --no-merges "$BASE..HEAD"); do
+            author="$(git log -1 --format='%an <%ae>' "$c")"
+            if ! git log -1 --format='%(trailers:key=Signed-off-by,valueonly)' "$c" | grep -Fxq "$author"; then
+              echo "::error::commit $c has no 'Signed-off-by: $author' (use git commit -s)"
+              fail=1
+            fi
+          done
+          exit $fail

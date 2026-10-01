@@ -1,0 +1,19 @@
+# systemd USER unit for pan-memoryd (integration spec §4.5). Rendered by `pan daemon install`;
+# placeholders: ${exec_start} ${hermes_home} ${hermes_home_env}.
+# Enable manually: systemctl --user daemon-reload && systemctl --user enable --now pan-memoryd.service
+[Unit]
+Description=PAN memory curation daemon (pan-memoryd) for ${hermes_home}
+After=default.target
+
+[Service]
+Type=simple
+Environment=${hermes_home_env}
+ExecStart=${exec_start}
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGTERM
+TimeoutStopSec=30
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

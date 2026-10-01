@@ -1,0 +1,67 @@
+{
+  "indexed": {},
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {},
+  "pages": {
+    "created": [],
+    "updated": []
+  },
+  "records": [
+    {
+      "action": null,
+      "claim_evidence": [],
+      "claims": [],
+      "classification": {
+        "confidence": 0.9,
+        "destination": "none",
+        "importance": 0.0,
+        "lifetime": "transient",
+        "relevance": 0.1,
+        "should_remember": false,
+        "type": "noise"
+      },
+      "confidence": null,
+      "event_ids": [
+        "01K0NOI0000000000000000001"
+      ],
+      "evidence": null,
+      "l1": null,
+      "outcome": "dropped",
+      "provenance": null,
+      "session_id": "sess-noise",
+      "target_pages": null
+    },
+    {
+      "action": null,
+      "claim_evidence": [],
+      "claims": [],
+      "classification": {
+        "confidence": 0.9,
+        "destination": "none",
+        "importance": 0.0,
+        "lifetime": "transient",
+        "relevance": 0.1,
+        "should_remember": false,
+        "type": "noise"
+      },
+      "confidence": null,
+      "event_ids": [
+        "01K0NOI0000000000000000002"
+      ],
+      "evidence": null,
+      "l1": null,
+      "outcome": "dropped",
+      "provenance": null,
+      "session_id": "sess-noise",
+      "target_pages": null
+    }
+  ],
+  "scenario": "noise"
+}

@@ -1,0 +1,62 @@
+{
+  "indexed": {
+    "learnings/vllm-tool-calling.md": true
+  },
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {
+    "learnings/vllm-tool-calling.md": "---\nid: learnings.vllm-tool-calling\ntype: learning\nstatus: active\ncreated: 2026-09-23\nupdated: 2026-09-24\nconfidence: high\nsources:\n  - session:sess-env\n  - event:01K0ENV0000000000000000001\n  - event:01K0ENV0000000000000000002\nrelated: []\ntags: [vllm, tool-calling, dgx-spark]\n---\n\n# vLLM serves without tool calling\n\nvLLM on the DGX Spark serves `RedHatAI/Qwen3.6-35B-A3B-NVFP4` as `primary` on port 8000, but was\nstarted without `--enable-auto-tool-choice --tool-call-parser`, so tool calls fail. Hermes needs\ntool calling. (observed)\n\n## Updates\n\n### 2026-09-24 · session:sess-env\n\n- `docker inspect vllm-main` reports: vllm serve RedHatAI/Qwen3.6-35B-A3B-NVFP4 --served-model-name primary --max-model-len 32768 --reasoning-parser qwen3 (observed)\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-env, event:01K0ENV0000000000000000001, event:01K0ENV0000000000000000002_\n"
+  },
+  "pages": {
+    "created": [],
+    "updated": [
+      "learnings/vllm-tool-calling.md"
+    ]
+  },
+  "records": [
+    {
+      "action": "update",
+      "claim_evidence": [
+        "inferred",
+        "observed"
+      ],
+      "claims": [
+        "The vLLM server was started without --enable-auto-tool-choice and --tool-call-parser, so tool calling is disabled.",
+        "`docker inspect vllm-main` reports: vllm serve RedHatAI/Qwen3.6-35B-A3B-NVFP4 --served-model-name primary --max-model-len 32768 --reasoning-parser qwen3"
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.76,
+      "event_ids": [
+        "01K0ENV0000000000000000001",
+        "01K0ENV0000000000000000002"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-env",
+        "event:01K0ENV0000000000000000001",
+        "event:01K0ENV0000000000000000002"
+      ],
+      "session_id": "sess-env",
+      "target_pages": [
+        "learnings.vllm-tool-calling"
+      ]
+    }
+  ],
+  "scenario": "env_fact"
+}

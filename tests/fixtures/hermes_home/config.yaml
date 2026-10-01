@@ -1,0 +1,17 @@
+# Minimal HERMES_HOME config for PAN tests.
+memory:
+  provider: pan
+  memory_enabled: true
+  user_profile_enabled: true
+  nudge_interval: 0
+  memory_char_limit: 2200
+  user_char_limit: 1375
+# M9: the shipped default gate is the local LLM. Tests (also daemons started as subprocesses, where
+# conftest's pin does not reach) use rules-v2, and the gate endpoint points nowhere, so no test can
+# ever call the live model server.
+pan:
+  classifier:
+    kind: rules
+  models:
+    gate:
+      base_url: http://127.0.0.1:9/v1

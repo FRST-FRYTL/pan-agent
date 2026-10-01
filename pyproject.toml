@@ -1,0 +1,56 @@
+[project]
+name = "pan-agent"
+version = "0.1.0a1"
+description = "PAN (Persistent Agent Nexus): structured, auditable long-term memory for Hermes Agent"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"   # same window as Hermes
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+keywords = ["hermes-agent", "memory", "llm", "agents", "knowledge-base"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+authors = [{ name = "FRST-FRYTL" }]
+# No hermes-agent dependency (ADR-011): pan-agent is installed into an existing Hermes venv. The tested
+# Hermes version is pan.HERMES_PIN + HERMES_BASE, checked at runtime (`pan setup` refuses others without
+# --force); bump both on every upstream sync. PyYAML ships with Hermes; it is listed for clean test venvs.
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/FRST-FRYTL/pan-agent"
+Issues = "https://github.com/FRST-FRYTL/pan-agent/issues"
+
+[project.entry-points."hermes_agent.memory_providers"]
+pan = "pan.hermes"
+
+[project.scripts]
+pan = "pan.cli:main"
+pan-memoryd = "pan.daemon.memoryd:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pan = ["daemon/*.service"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "contract: assumptions PAN makes about the pinned Hermes version (run on every upstream sync)",
+  "e2e: end-to-end pipeline tests",
+  "live: needs a real model endpoint (skipped unless PAN_LIVE_MODEL=http://host:port/v1 is set)",
+]

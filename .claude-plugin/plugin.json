@@ -1,0 +1,11 @@
+{
+  "name": "pan",
+  "description": "PAN (pan-agent), structured long-term memory for Hermes Agent: a skill to install, check or remove PAN",
+  "author": {
+    "name": "FRST-FRYTL"
+  },
+  "homepage": "https://github.com/FRST-FRYTL/pan-agent",
+  "repository": "https://github.com/FRST-FRYTL/pan-agent",
+  "license": "MIT",
+  "keywords": ["hermes-agent", "memory", "install"]
+}

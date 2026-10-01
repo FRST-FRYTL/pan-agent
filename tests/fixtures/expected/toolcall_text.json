@@ -1,0 +1,122 @@
+{
+  "indexed": {
+    "decisions/ADR-002-sqlite-not-postgres-bench-results-index.md": true,
+    "index.md": true,
+    "operations/grafana-container.md": true
+  },
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {
+    "decisions/ADR-002-sqlite-not-postgres-bench-results-index.md": "---\nid: decisions.adr-002\ntype: decision\nstatus: accepted\ncreated: 2026-09-24\nupdated: 2026-09-24\nconfidence: medium\nsources:\n  - session:sess-tct2\n  - event:01K0TCT0000000000000000002\nrelated: []\ntags: [postgres, sqlite]\n---\n\n# ADR-002: We use SQLite, not Postgres, for the bench results index\n\n## Context\n\nStated by the user: \"Decision: we use SQLite, not Postgres, for the bench results index.\".\n\n## Decision\n\n- We use SQLite, not Postgres, for the bench results index. (observed)\n\n## Consequences\n\n_Not recorded yet._\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-tct2, event:01K0TCT0000000000000000002_\n",
+    "index.md": "---\nid: index\ntype: index\nstatus: active\ncreated: 2026-09-23\nupdated: 2026-09-24\nconfidence: high\ntags: [index]\n---\n\n# PAN Wiki (test seed)\n\n| Area | Pages |\n|---|---|\n| decisions/ | [ADR-001: SQLite FTS5 for retrieval](decisions/ADR-001-sqlite-fts5-retrieval.md) |\n| systems/ | [DGX Spark host](systems/dgx-spark-host.md), [Langfuse](systems/langfuse.md) |\n| learnings/ | [vLLM tool calling](learnings/vllm-tool-calling.md) |\n| operations/ | [Restart vLLM with tool calling](operations/restart-vllm.md) |\n| incidents/ | [Event spool disk full](incidents/2026-09-20-spool-disk-full.md) |\n\n## Pages\n\n_Maintained by `pan-memoryd`: every page it creates is linked here, grouped by area._\n\n### decisions/\n\n- [ADR-002: We use SQLite, not Postgres, for the bench results index](decisions/ADR-002-sqlite-not-postgres-bench-results-index.md)\n\n### operations/\n\n- [Grafana container](operations/grafana-container.md)\n",
+    "operations/grafana-container.md": "---\nid: operations.grafana-container\ntype: environment\nstatus: active\ncreated: 2026-09-24\nupdated: 2026-09-24\nconfidence: medium\nsources:\n  - session:sess-tct3\n  - event:01K0TCT0000000000000000003\nrelated: []\ntags: [grafana, container]\nsubject: Grafana container\n---\n\n# Grafana container\n\n## Facts\n\n- The Grafana container listens on port 3100. (observed)\n\n## Updates\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-tct3, event:01K0TCT0000000000000000003_\n"
+  },
+  "pages": {
+    "created": [
+      "decisions/ADR-002-sqlite-not-postgres-bench-results-index.md",
+      "operations/grafana-container.md"
+    ],
+    "updated": [
+      "index.md"
+    ]
+  },
+  "records": [
+    {
+      "action": null,
+      "claim_evidence": [],
+      "claims": [],
+      "classification": {
+        "confidence": 0.9,
+        "destination": "none",
+        "importance": 0.0,
+        "lifetime": "transient",
+        "relevance": 0.1,
+        "should_remember": false,
+        "type": "noise"
+      },
+      "confidence": null,
+      "event_ids": [
+        "01K0TCT0000000000000000001"
+      ],
+      "evidence": null,
+      "l1": null,
+      "outcome": "dropped",
+      "provenance": null,
+      "session_id": "sess-tct1",
+      "target_pages": null
+    },
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "We use SQLite, not Postgres, for the bench results index."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.8,
+        "lifetime": "long_term",
+        "relevance": 0.9,
+        "should_remember": true,
+        "type": "decision"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0TCT0000000000000000002"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-tct2",
+        "event:01K0TCT0000000000000000002"
+      ],
+      "session_id": "sess-tct2",
+      "target_pages": [
+        "decisions.adr-002"
+      ]
+    },
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "The Grafana container listens on port 3100."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0TCT0000000000000000003"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-tct3",
+        "event:01K0TCT0000000000000000003"
+      ],
+      "session_id": "sess-tct3",
+      "target_pages": [
+        "operations.grafana-container"
+      ]
+    }
+  ],
+  "scenario": "toolcall_text"
+}

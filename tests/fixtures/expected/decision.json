@@ -1,0 +1,88 @@
+{
+  "indexed": {
+    "decisions/ADR-002-run-curation-separate-background-service.md": true,
+    "index.md": true
+  },
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {
+    "decisions/ADR-002-run-curation-separate-background-service.md": "---\nid: decisions.adr-002\ntype: decision\nstatus: accepted\ncreated: 2026-09-24\nupdated: 2026-09-24\nconfidence: medium\nsources:\n  - session:sess-dec\n  - event:01K0DEC0000000000000000001\n  - event:01K0DEC0000000000000000002\nrelated: []\ntags: [pan-memoryd, spool]\n---\n\n# ADR-002: Run curation in a separate background service (pan-memoryd)\n\n## Context\n\nProposed by the assistant in reply to \"Where should curation run?\"; confirmed by the user: \"yes, go with the separate service\".\n\n## Decision\n\n- Run curation in a separate background service (pan-memoryd); the plugin only writes events to a durable spool. (observed)\n\n## Consequences\n\n_Not recorded yet._\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-dec, event:01K0DEC0000000000000000001, event:01K0DEC0000000000000000002_\n",
+    "index.md": "---\nid: index\ntype: index\nstatus: active\ncreated: 2026-09-23\nupdated: 2026-09-24\nconfidence: high\ntags: [index]\n---\n\n# PAN Wiki (test seed)\n\n| Area | Pages |\n|---|---|\n| decisions/ | [ADR-001: SQLite FTS5 for retrieval](decisions/ADR-001-sqlite-fts5-retrieval.md) |\n| systems/ | [DGX Spark host](systems/dgx-spark-host.md), [Langfuse](systems/langfuse.md) |\n| learnings/ | [vLLM tool calling](learnings/vllm-tool-calling.md) |\n| operations/ | [Restart vLLM with tool calling](operations/restart-vllm.md) |\n| incidents/ | [Event spool disk full](incidents/2026-09-20-spool-disk-full.md) |\n\n## Pages\n\n_Maintained by `pan-memoryd`: every page it creates is linked here, grouped by area._\n\n### decisions/\n\n- [ADR-002: Run curation in a separate background service (pan-memoryd)](decisions/ADR-002-run-curation-separate-background-service.md)\n"
+  },
+  "pages": {
+    "created": [
+      "decisions/ADR-002-run-curation-separate-background-service.md"
+    ],
+    "updated": [
+      "index.md"
+    ]
+  },
+  "records": [
+    {
+      "action": null,
+      "claim_evidence": [],
+      "claims": [],
+      "classification": {
+        "confidence": 0.9,
+        "destination": "none",
+        "importance": 0.0,
+        "lifetime": "transient",
+        "relevance": 0.1,
+        "should_remember": false,
+        "type": "noise"
+      },
+      "confidence": null,
+      "event_ids": [
+        "01K0DEC0000000000000000001"
+      ],
+      "evidence": null,
+      "l1": null,
+      "outcome": "dropped",
+      "provenance": null,
+      "session_id": "sess-dec",
+      "target_pages": null
+    },
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed"
+      ],
+      "claims": [
+        "Run curation in a separate background service (pan-memoryd); the plugin only writes events to a durable spool."
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.8,
+        "lifetime": "long_term",
+        "relevance": 0.9,
+        "should_remember": true,
+        "type": "decision"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0DEC0000000000000000001",
+        "01K0DEC0000000000000000002"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-dec",
+        "event:01K0DEC0000000000000000001",
+        "event:01K0DEC0000000000000000002"
+      ],
+      "session_id": "sess-dec",
+      "target_pages": [
+        "decisions.adr-002"
+      ]
+    }
+  ],
+  "scenario": "decision"
+}

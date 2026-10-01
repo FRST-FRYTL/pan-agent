@@ -1,0 +1,68 @@
+{
+  "indexed": {
+    "index.md": true,
+    "operations/gpu.md": true
+  },
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {
+    "index.md": "---\nid: index\ntype: index\nstatus: active\ncreated: 2026-09-23\nupdated: 2026-09-24\nconfidence: high\ntags: [index]\n---\n\n# PAN Wiki (test seed)\n\n| Area | Pages |\n|---|---|\n| decisions/ | [ADR-001: SQLite FTS5 for retrieval](decisions/ADR-001-sqlite-fts5-retrieval.md) |\n| systems/ | [DGX Spark host](systems/dgx-spark-host.md), [Langfuse](systems/langfuse.md) |\n| learnings/ | [vLLM tool calling](learnings/vllm-tool-calling.md) |\n| operations/ | [Restart vLLM with tool calling](operations/restart-vllm.md) |\n| incidents/ | [Event spool disk full](incidents/2026-09-20-spool-disk-full.md) |\n\n## Pages\n\n_Maintained by `pan-memoryd`: every page it creates is linked here, grouped by area._\n\n### operations/\n\n- [GPU](operations/gpu.md)\n",
+    "operations/gpu.md": "---\nid: operations.gpu\ntype: environment\nstatus: active\ncreated: 2026-09-24\nupdated: 2026-09-24\nconfidence: medium\nsources:\n  - session:sess-gpu\n  - event:01K0GPU0000000000000000001\n  - event:01K0GPU0000000000000000002\n  - event:01K0GPU0000000000000000003\nrelated: []\ntags: [gpu, nvidia, hardware]\nsubject: GPU\n---\n\n# GPU\n\nUser asked: \"Run `nvidia-smi --query-gpu=name --format=csv,noheader` and tell me which GPU this machine has.\".\n\n## Facts\n\n- GPU (`nvidia-smi --query-gpu=name --format=csv,noheader`) reports: NVIDIA GB10 (observed)\n\n## Updates\n\n_Provenance: pan-memoryd, 2026-09-24 · session:sess-gpu, event:01K0GPU0000000000000000001, event:01K0GPU0000000000000000002, event:01K0GPU0000000000000000003_\n"
+  },
+  "pages": {
+    "created": [
+      "operations/gpu.md"
+    ],
+    "updated": [
+      "index.md"
+    ]
+  },
+  "records": [
+    {
+      "action": "create",
+      "claim_evidence": [
+        "observed",
+        "observed"
+      ],
+      "claims": [
+        "The machine has an **NVIDIA GB10** GPU.",
+        "GPU (`nvidia-smi --query-gpu=name --format=csv,noheader`) reports: NVIDIA GB10"
+      ],
+      "classification": {
+        "confidence": 0.8,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.8,
+      "event_ids": [
+        "01K0GPU0000000000000000001",
+        "01K0GPU0000000000000000002",
+        "01K0GPU0000000000000000003"
+      ],
+      "evidence": "observed",
+      "l1": null,
+      "outcome": "committed",
+      "provenance": [
+        "session:sess-gpu",
+        "event:01K0GPU0000000000000000001",
+        "event:01K0GPU0000000000000000002",
+        "event:01K0GPU0000000000000000003"
+      ],
+      "session_id": "sess-gpu",
+      "target_pages": [
+        "operations.gpu"
+      ]
+    }
+  ],
+  "scenario": "gpu_fact"
+}

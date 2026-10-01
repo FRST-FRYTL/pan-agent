@@ -1,0 +1,52 @@
+{
+  "indexed": {},
+  "l1_added": {
+    "user": []
+  },
+  "l1_final": {
+    "memory": [
+      "Primary inference runs on a local DGX Spark via vLLM at http://localhost:8000/v1 (model \"primary\")."
+    ]
+  },
+  "page_texts": {},
+  "pages": {
+    "created": [],
+    "updated": []
+  },
+  "records": [
+    {
+      "action": "ignore",
+      "claim_evidence": [
+        "inferred"
+      ],
+      "claims": [
+        "vLLM serves RedHatAI/Qwen3.6-35B-A3B-NVFP4 as 'primary' on port 8000 without tool calling enabled."
+      ],
+      "classification": {
+        "confidence": 0.6,
+        "destination": "wiki",
+        "importance": 0.6,
+        "lifetime": "long_term",
+        "relevance": 0.8,
+        "should_remember": true,
+        "type": "environment"
+      },
+      "confidence": 0.9,
+      "event_ids": [
+        "01K0DUP0000000000000000001"
+      ],
+      "evidence": "inferred",
+      "l1": null,
+      "outcome": "ignored",
+      "provenance": [
+        "session:sess-dup",
+        "event:01K0DUP0000000000000000001"
+      ],
+      "session_id": "sess-dup",
+      "target_pages": [
+        "learnings.vllm-tool-calling"
+      ]
+    }
+  ],
+  "scenario": "duplicate"
+}
