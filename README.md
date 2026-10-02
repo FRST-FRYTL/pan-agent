@@ -1,5 +1,9 @@
 # pan-agent: auditable long-term memory for Hermes Agent
 
+![PAN architecture: Hermes Agent (unchanged) → capture → event spool → pan-memoryd (gate → hybrid retrieval → curator) → knowledge store (Markdown wiki + Git, USER.md, MEMORY.md), with recall back to the agent through a per-turn recall block and the memory_search / memory_read tools](docs/assets/pan-architecture.png)
+
+<sub>Illustration generated with ChatGPT image generation and checked against the architecture described below.</sub>
+
 pan-agent (PAN, Persistent Agent Nexus) gives [Hermes Agent](https://github.com/NousResearch/hermes-agent)
 a persistent, auditable long-term memory. It is a drop-in memory-provider plugin
 (`memory.provider: pan`) and needs no changes to Hermes code. After each turn, a background daemon
